@@ -2,7 +2,7 @@
   <v-app-bar app color="white" dark flat class="px-20">
     <v-btn @click="goToHome" class="logo-button">
       <template #prepend>
-        <v-img href="https://framer.com/projects/Untitled--m89DANGbHSVWgXTBuyHd-4OxAY?node=Nc09k9yOT" alt="Logo" class="logo-image"></v-img>
+        <img class="mr-3" :src="require('../assets/studysquad-logo.png')" height="60"/>
       </template>
     </v-btn>
     <v-spacer></v-spacer>

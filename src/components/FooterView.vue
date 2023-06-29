@@ -1,4 +1,5 @@
 <template>
+  <v-divider class="divider"></v-divider>
   <v-footer>
       <v-card
         elevation="0"
@@ -7,7 +8,7 @@
         class=""
       >
       <v-card-text class="text-black d-flex justify-end align-center">
-          @ {{ new Date().getFullYear() }} —
+          @ {{ new Date().getFullYear() }}-
           <strong>STUDY SQUAD, Inc.</strong>
           <div class="ml-auto">
           <v-btn class="mx-4" variant="plain" href="https://instagram.com" target="_blank">
@@ -29,6 +30,11 @@ export default {
 </script>
 
 <style>
+.divider {
+  height: 1px;
+  background-color: grey;
+  margin: 10px 0;
+}
 .v-footer {
   padding: 8px 0 !important;
 }
