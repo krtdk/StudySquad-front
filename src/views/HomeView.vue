@@ -1,8 +1,6 @@
 <template>
   <v-app id="home">
   <HelloWorld />
-  <NavBar />
-  <FooterView />
   </v-app>
 </template>
 
@@ -10,17 +8,13 @@
 import { defineComponent } from 'vue';
 
 // Components
-import HelloWorld from '../components/HelloWorld.vue';
-import NavBar from '@/components/NavBar.vue';
-import FooterView from "../components/FooterView.vue";
+import HelloWorld from '../components/MainPage.vue';
 
 export default defineComponent({
   name: 'HomeView',
 
   components: {
     HelloWorld,
-    NavBar,
-    FooterView
   },
 });
 </script>
