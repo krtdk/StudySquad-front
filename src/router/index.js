@@ -1,11 +1,27 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import SquadLayout from '../components/SquadLayout.vue'
+
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/SignIn',
+    name: 'SignIn',
+    component: () => import('@/views/SignIn.vue'),
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: () => import('@/views/SignUp.vue'),
+  },
+  {
+    path: '/StudySign',
+    name: 'Studysign',
+    component: () => import('@/views/StudySign.vue'),
   },
   {
     path: '/about',
@@ -95,16 +111,6 @@ const routes = [
     meta: {
       layout: SquadLayout, // Specify the custom layout component for this route
     },
-  },
-  {
-    path: '/SignIn',
-    name: 'SignIn',
-    component: () => import('@/views/SignIn.vue'),
-  },
-  {
-    path: '/SignUp',
-    name: 'SignUp',
-    component: () => import('@/views/SignUp.vue'),
   },
 ]
 

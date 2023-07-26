@@ -6,7 +6,6 @@
       </template>
     </v-btn>
     <v-spacer></v-spacer>
-
     <v-btn @click="$router.push('/')">HOME</v-btn>
 
     <v-btn @click="$router.push('/SquadHome')">SQUAD</v-btn>
@@ -28,6 +27,7 @@
 
     <v-btn @click="$router.push('/MyPage')">MY PAGE</v-btn>
     <v-btn class="purple-button" dark @click="$router.push('/SignIn')">LOGIN</v-btn>
+
   </v-app-bar>
 </template>
 
