@@ -1,10 +1,8 @@
 <template>
-  <v-app>
-    <v-main>
-      <nav-bar/>
+  <v-container>
         <!-- 로그인 폼 내용 -->
         <v-img src="~@/assets/studysquad-logo.png"  alt="logo" width="350px" class="center-image"></v-img>
-        <v-text-field placeholder="name@email.com" class="custom-text-field"></v-text-field> 
+        <v-text-field placeholder="name@email.com" class="custom-text-field"></v-text-field>
         <v-text-field placeholder="*******" class= "password"></v-text-field>
         <div class="button-center">
             <v-btn class="button1" color="#8682D5" dark >Login</v-btn>
@@ -12,9 +10,7 @@
         <div class="button-center">
             <v-btn to="/signup" class="button2 small-button" color="#04B4AE" dark >회원가입</v-btn>
         </div>
-    </v-main>
-    <footer-view/>
-  </v-app>
+  </v-container>
 </template>
 <style>
 .center-image{
@@ -50,18 +46,12 @@
 </style>
 
 <script>
-import NavBar from '../components/NavBar.vue';
-import FooterView from '../components/FooterView.vue';
 
 export default {
   name: 'LoginForm', // 컴포넌트 이름을 변경
   data() {
     return {
     };
-  },
-  components: {
-    NavBar,
-    FooterView
   },
   computed: {},
   methods: {},

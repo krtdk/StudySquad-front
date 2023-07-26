@@ -1,7 +1,6 @@
 <template>
-  <v-app>
-    <v-main>
-      <nav-bar/>
+    <v-container>
+
       <br>
       <br>
         <span class="Studylabel1">스쿼드 가입</span>
@@ -37,9 +36,8 @@
           </v-radio-group>
           <v-btn color="#0099ff" class="confirm-button" dark >가입</v-btn>
         </div>
-    </v-main>
-    <footer-view/>
-  </v-app>
+      </v-container>
+
 </template>
 <style>
 .Studylabel1{
@@ -54,7 +52,7 @@
     background-color:#D4D4D4;
     border-radius: 10px;
     font-size: 8px;
-    width: 30px;  
+    width: 30px;
     height: 20px;
     justify-content: center;
    align-items: center;
@@ -84,31 +82,24 @@
      right: 10%;
     align-items: right;
     margin: 25px;
-    
+
 }
 .confirm-button {
    margin-left: 15px;
    font-weight: bold;
-  
+
 }
 
 
 </style>
 
 <script>
-import NavBar from '../components/NavBar.vue';
-import FooterView from '../components/FooterView.vue';
-
 export default {
   name: 'LoginForm', // 컴포넌트 이름을 변경
   data() {
     return {
       role:'rdo1'
     };
-  },
-  components: {
-    NavBar,
-    FooterView
   },
   computed: {},
   methods: {},

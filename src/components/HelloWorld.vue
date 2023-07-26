@@ -1,4 +1,48 @@
 <template>
+   <div class="main-page">
+    <!-- Main Image Section -->
+    <v-container fluid>
+      <v-img src="메인 이미지 파일 경로" alt="Main Image" />
+    </v-container>
+
+    <!-- Mentor Board Section -->
+    <v-container>
+      <h2>Mentor Board</h2>
+      <v-card>
+        <v-card-text>
+          <!-- Mentor Board Content Here -->
+        </v-card-text>
+      </v-card>
+    </v-container>
+
+    <!-- Mentee Board Section -->
+    <v-container>
+      <h2>Mentee Board</h2>
+      <v-card>
+        <v-card-text>
+          <!-- Mentee Board Content Here -->
+        </v-card-text>
+      </v-card>
+    </v-container>
+
+    <!-- Overall Board Section -->
+    <v-container>
+      <h2>Overall Board</h2>
+      <v-card>
+        <v-card-text>
+          <ul>
+            <li v-for="(post, index) in posts" :key="index">
+              <div>{{ post.name }}</div>
+              <div>{{ post.title }}</div>
+              <div>{{ post.email }}</div>
+              <div>{{ post.role }}</div>
+            </li>
+          </ul>
+        </v-card-text>
+      </v-card>
+    </v-container>
+  </div>
+
   <v-container>
     <v-row class="text-center">
       <v-col cols="12">
@@ -329,6 +373,12 @@ export default {
         href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
       },
     ],
+    posts: [
+      { name: 'John', title: 'Title 1', email: 'john@example.com', role: 'Role 1' },
+        { name: 'Jane', title: 'Title 2', email: 'jane@example.com', role: 'Role 2' },
+        { name: 'Tom', title: 'Title 3', email: 'tom@example.com', role: 'Role 3' },
+        // Add more posts as needed
+    ]
   }),
 }
 </script>
