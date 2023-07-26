@@ -10,7 +10,7 @@
     <v-btn text>SQUAD</v-btn>
     <v-btn text>BOARD</v-btn>
     <v-btn text>MY PAGE</v-btn>
-<v-btn class="purple-button" dark>LOGIN</v-btn>
+    <v-btn to="/login" class="purple-button" dark>Login</v-btn>
   </v-app-bar>
 </template>
 
