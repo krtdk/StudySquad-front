@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <div class="board-list">
+    <div class="board-list" style="margin-bottom: 10px">
       <table class="w3-table-all">
         <thead>
           <tr>
@@ -43,12 +43,12 @@
         </span>
       </div>
     </div>
-    <div class="common-buttons" v-if="!hideRegisterButton">
+    <div class="common-buttons" v-if="!hideRegisterButton" style="text-align: right">
       <button type="button" class="w3-button w3-round w3-blue-gray" @click="$router.push('/BoardWrite')">등록</button>
     </div>
-    <div class="text-center pt-2">
-      <v-pagination v-model="page" :length="pageCount"></v-pagination>
-    </div>
+<!--    <div class="text-center pt-2">-->
+<!--      <v-pagination v-model="page" :length="pageCount"></v-pagination>-->
+<!--    </div>-->
   </v-container>
 </template>
 
@@ -209,4 +209,8 @@ export default {
 };
 </script>
 
-<style scoped src="../../style/w3.css"></style>
+<style scoped src="../../style/w3.css">
+.board-list {
+  margin-bottom: 20px;
+}
+</style>

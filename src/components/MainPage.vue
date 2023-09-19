@@ -5,33 +5,6 @@
       <v-img src="../assets/Main-Image.png" alt="Main Image" :width="vflex" :height="700" />
     </v-container>
 
-    <!-- Mentor Board Section -->
-    <v-container>
-      <h2>
-        <router-link to="/MentorBoard" class="router-link">
-          멘토 구해요
-        </router-link>
-      </h2>
-      <v-card>
-        <v-card-text>
-          <MentorBoard />
-        </v-card-text>
-      </v-card>
-    </v-container>
-
-    <!-- Mentee Board Section -->
-    <v-container>
-      <h2><router-link to="/MenteeBoard" class="router-link">
-          멘티 구해요
-        </router-link>
-      </h2>
-      <v-card>
-        <v-card-text>
-          <MenteeBoard/>
-        </v-card-text>
-      </v-card>
-    </v-container>
-
     <!-- Overall Board Section -->
     <v-container>
       <h2><router-link to="/BulletinBoard" class="router-link">
@@ -44,20 +17,41 @@
         </v-card-text>
       </v-card>
     </v-container>
+
+    <v-container>
+      <h2>멘토 구해요</h2>
+      <v-card>
+        <v-card-text>
+          <SquadRecruitTable :params="paramsRecruitMentor"/>
+        </v-card-text>
+      </v-card>
+    </v-container>
+
+    <v-container>
+      <h2>멘티 구해요</h2>
+      <v-card>
+        <v-card-text>
+          <SquadRecruitTable :params="paramsRecruitMentee"/>
+        </v-card-text>
+      </v-card>
+    </v-container>
   </div>
 </template>
 
 <script>
-import MentorBoard from "@/views/board/MentorBoard.vue";
-import MenteeBoard from "@/views/board/MenteeBoard.vue";
 import BulletinBoard from "@/views/board/BulletinBoard.vue";
+import SquadRecruitTable from "@/views/board/SquadRecruitTable.vue";
 
 export default {
   components: {
-    MentorBoard,MenteeBoard,BulletinBoard
+    BulletinBoard, SquadRecruitTable
   },
-
-
+  data() {
+    return {
+      paramsRecruitMentor: { page: 0, size: 10, mentor: false },
+      paramsRecruitMentee: { page: 0, size: 10, mentor: true },
+    }
+  }
 };
 
 </script>

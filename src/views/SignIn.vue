@@ -1,59 +1,110 @@
 <template>
-  <v-container>
-        <!-- 로그인 폼 내용 -->
-        <v-img src="~@/assets/studysquad-logo.png"  alt="logo" width="350px" class="center-image"></v-img>
-        <v-text-field placeholder="name@email.com" class="custom-text-field"></v-text-field>
-        <v-text-field placeholder="*******" class= "password"></v-text-field>
-        <div class="button-center">
-            <v-btn class="button1" color="#8682D5" dark >Login</v-btn>
-        </div>
-        <div class="button-center">
-            <v-btn to="/signup" class="button2 small-button" color="#04B4AE" dark >회원가입</v-btn>
-        </div>
+  <v-container class="login_container">
+    <v-img src="~@/assets/studysquad-logo.png" alt="logo" width="350px"/>
+    <div class="fail_login_alert" v-if="!successful">
+      <v-alert
+          color="error"
+          icon="$error"
+          title="로그인 실패"
+          text="올바른 로그인 정보를 입력해주세요"/>
+    </div>
+    <div class="login_form">
+      <v-text-field
+          v-model="user.email"
+          placeholder="example@email.com"
+          variant="solo"/>
+
+      <v-text-field
+          v-model="user.password"
+          placeholder="password"
+          @keyup.enter="handleLogin()"
+          :type="'password'"
+          variant="solo"/>
+
+      <v-btn @click="handleLogin()" class="login_button">LOGIN</v-btn>
+
+      <div class="login_router">
+        <router-link to="/signup" class="login_link">회원가입</router-link>
+      </div>
+    </div>
   </v-container>
 </template>
+
 <style>
-.center-image{
-    display: block;
-    margin: 0 auto;
+a {
+  text-decoration: none;
+  color: rgb(128, 128, 128);
 }
-.custom-text-field {
-    width: 350px;
-    margin: 0 auto;
+
+a:hover {
+  color: darkgray;
 }
-.password{
-    width: 350px;
-    margin: 0 auto;
+
+.fail_login_alert {
+  width: 350px;
+  padding-bottom: 15px;
 }
-.button-center{
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
+
+.login_button {
+  background-color: #8682D5;
+  color: white;
+  width: 100%;
 }
-.button1{
-    width: 350px;
-    color: #ffffff !important;
+
+.login_form {
+  width: 350px;
 }
-.button2{
-    margin: 10px;
-    color:#ffffff !important;
+
+.login_container {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.small-button {
-  width: 100px;
-  height: 20px;
-  font-size: 8px;
+
+.login_router {
+  padding-top: 10px;
+}
+
+.login_link {
+  display: flex;
+  justify-content: right;
 }
 </style>
 
 <script>
-
 export default {
   name: 'LoginForm', // 컴포넌트 이름을 변경
   data() {
     return {
+      user: {
+        email: '',
+        password: '',
+      },
+      successful: true,
     };
   },
   computed: {},
-  methods: {},
+  methods: {
+    handleLogin() {
+      this.$store.dispatch('login', {...this.user})
+          .then(() => {
+                this.successful = true;
+
+                this.$router.push('/');
+              },
+              () => {
+                this.removeLoginData();
+                this.successful = false;
+              });
+
+    },
+    removeLoginData() {
+      this.user.email = '';
+      this.user.password = '';
+    }
+  },
 };
 </script>
