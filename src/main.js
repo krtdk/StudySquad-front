@@ -1,36 +1,39 @@
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
-import { loadFonts } from './plugins/webfontloader'
-//import axios from 'axios'
+import {loadFonts} from './plugins/webfontloader'
+import {library} from '@fortawesome/fontawesome-svg-core'
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
+import {faUserSecret} from '@fortawesome/free-solid-svg-icons'
 
-/* import the fontawesome core */
-import { library } from '@fortawesome/fontawesome-svg-core'
+import TokenService from "@/service/token.service";
+import setInterceptor from "@/service/setInterceptor";
 
-/* import font awesome icon component */
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-/* import specific icons */
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
-
-/* add icons to the library */
 library.add(faUserSecret)
-
-
 loadFonts()
 
-createApp(App)
-  .use(router)
-  .use(store)
-  .use(vuetify, {
-    defaultAssets: {
-      font: true,
-      icons: 'fa',
+const app = createApp(App);
+
+app.mixin({
+    created() {
+        const token = localStorage.getItem('Authorization');
+        if (token) {
+            TokenService.setAccessToken(token);
+        }
     },
-  })
-  .component('font-awesome-icon', FontAwesomeIcon)
-  .mount('#app')
-//app.config.globalProperties.$serverUrl = '//localhost:8081' // api server
-//app.config.globalProperties.$axios = axios // axios instance
+})
+
+setInterceptor(store)
+
+app.use(router)
+    .use(store)
+    .use(vuetify, {
+        defaultAssets: {
+            font: true,
+            icons: 'fa',
+        },
+    })
+    .component('font-awesome-icon', FontAwesomeIcon)
+    .mount('#app')

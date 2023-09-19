@@ -1,65 +1,69 @@
 <template>
- <v-container>
-        <!-- 로그인 폼 내용 -->
-        <v-img src="~@/assets/studysquad-logo.png"  alt="logo" width="350px" class="center-image"></v-img>
-        <div class="centered-text">
-         <span class="Signuplabel1">이메일</span>
-        </div>
-        <v-text-field placeholder="name@email.com" class="custom-text-field"></v-text-field>
-        <div class="centered-text2">
-         <span class="Signuplabel2">비밀번호</span>
-        </div>
-        <v-text-field placeholder="*******" class= "password"></v-text-field>
-        <div class="centered-text">
-         <span class="Signuplabel1">닉네임</span>
-        </div>
-        <v-text-field placeholder="UserName" class="nickname"></v-text-field>
-        <div class="button-center">
-            <v-btn class="button1" color="#8682D5" dark >Sign Up</v-btn>
-        </div>
-    </v-container>
+  <v-container class="register_container">
+    <v-img src="~@/assets/studysquad-logo.png" alt="logo" width="350px" class="center-image"></v-img>
+    <div class="register_form">
+      <div class="container_text">
+        이메일
+      </div>
+      <v-text-field v-model="user.email" placeholder="example@email.com" class="custom-text-field"/>
+    </div>
+    <div class="register_form">
+      <div class="container_text">
+        비밀번호
+      </div>
+      <v-text-field v-model="user.password" placeholder="password" class="password"></v-text-field>
+    </div>
+    <div class="register_form">
+      <div class="container_text">
+        닉네임
+      </div>
+      <v-text-field v-model="user.nickname" placeholder="nickname" class="nickname"></v-text-field>
+    </div>
+    <div @click="handleRegister()" class="button-center">
+      <v-btn class="button1" color="#8682D5" dark>signup</v-btn>
+    </div>
+  </v-container>
 </template>
+
 <style>
-.centered-text{
-    text-align: center;
-    margin-left: auto;
-    margin-right: 290px;
+.container_text {
+  font-weight: bold;
+  font-size: 20px;
+}
 
-}
-.centered-text2{
-    text-align: center;
-    margin-left: auto;
-    margin-right: 280px;
-
-}
-.Signuplabel1{
-        font-weight: bold;
-        font-size: 20px;
-}
 .custom-text-field {
-    width: 350px;
-    margin: 0 auto;
+  width: 350px;
+  margin: 0 auto;
 }
-.Signuplabel2{
-        font-weight: bold;
-        font-size: 19px;
+
+.password {
+  width: 350px;
+  margin: 0 auto;
 }
-.password{
-    width: 350px;
-    margin: 0 auto;
+
+.nickname {
+  width: 350px;
+  margin: 0 auto;
 }
-.nickname{
-    width: 350px;
-    margin: 0 auto;
+
+.button-center {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
-.button-center{
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
+
+.button1 {
+  width: 350px;
+  color: #ffffff !important;
 }
-.button1{
-    width: 350px;
-    color: #ffffff !important;
+
+.register_container {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>
 
@@ -68,9 +72,36 @@ export default {
   name: 'LoginForm', // 컴포넌트 이름을 변경
   data() {
     return {
+      user: {
+        email: '',
+        password: '',
+        nickname: '',
+      },
+      successful: false,
+      message: '',
     };
   },
-  computed: {},
-  methods: {},
+  computed: {
+    loggedIn() {
+      return this.$store.state.auth.status.loggedIn;
+    }
+  },
+  methods: {
+    handleRegister() {
+      this.message = '';
+
+      this.$store.dispatch('register', {...this.user})
+          .then(data => {
+                this.message = data.message;
+                this.successful = true;
+
+                this.$router.push('/SignIn');
+              },
+              error => {
+                this.message = error.toString();
+                this.successful = false;
+              });
+    },
+  },
 };
 </script>

@@ -112,6 +112,12 @@ const routes = [
       layout: SquadLayout, // Specify the custom layout component for this route
     },
   },
+  {
+    path: '/squad/recruit/:squadId',
+    name: 'singleRecruitSquad',
+    component: () => import('@/components/SingleRecruitSquad.vue'),
+    props: true,
+  },
 ]
 
 const router = createRouter({
