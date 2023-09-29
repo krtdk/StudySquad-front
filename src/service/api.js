@@ -8,4 +8,7 @@ const instance = axios.create({
     withCredentials: true,
 });
 
+axios.defaults.baseURL = process.env.VUE_APP_LOCAL_URI + '/api';
+axios.defaults.withCredentials = true;
+
 export default instance;
