@@ -1,23 +1,8 @@
 <template>
   <div class="main-page">
-    <!-- Main Image Section -->
     <v-container class="custom-container">
-      <v-img src="../assets/Main-Image.png" alt="Main Image" :width="vflex" :height="700" />
+      <v-img src="../../assets/Main-Image.png" alt="Main Image" :height="700" />
     </v-container>
-
-    <!-- Overall Board Section -->
-    <v-container>
-      <h2><router-link to="/BulletinBoard" class="router-link">
-          전체 게시글
-        </router-link>
-      </h2>
-      <v-card>
-        <v-card-text>
-          <BulletinBoard/>
-        </v-card-text>
-      </v-card>
-    </v-container>
-
     <v-container>
       <h2>멘토 구해요</h2>
       <v-card>
@@ -39,12 +24,11 @@
 </template>
 
 <script>
-import BulletinBoard from "@/views/board/BulletinBoard.vue";
 import SquadRecruitTable from "@/views/board/SquadRecruitTable.vue";
 
 export default {
   components: {
-    BulletinBoard, SquadRecruitTable
+    SquadRecruitTable
   },
   data() {
     return {
