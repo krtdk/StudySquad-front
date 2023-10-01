@@ -3,13 +3,13 @@
     <v-btn @click="$router.push('/')" class="logo-button no-hover-background" :ripple="false"
            style="position: relative;" size="large">
       <template #prepend>
-        <img class="mr-3 logo-image" :src="require('../assets/main_logo.png')" height="60"/>
+        <img class="mr-3 logo-image" :src="require('../../assets/main_logo.png')" height="60"/>
       </template>
     </v-btn>
     <v-spacer></v-spacer>
     <v-btn @click="$router.push('/')">HOME</v-btn>
 
-    <v-btn @click="$router.push('/SquadHome')">SQUAD</v-btn>
+    <v-btn @click="handleRouteSquad()">SQUAD</v-btn>
 
     <v-btn>Board
       <v-menu activator="parent">
@@ -44,6 +44,9 @@
 </template>
 
 <script>
+
+import SquadService from "@/service/squad.service";
+
 export default {
   computed: {
     loggedIn() {
@@ -67,9 +70,26 @@ export default {
     },
     routeMyPage() {
       if (this.$store.getters.isLoggedIn) {
-        this.$router.push('/SignIn');
-      } else {
         this.$router.push('/MyPage');
+      } else {
+        this.$router.push('/SignIn');
+
+      }
+    },
+    handleRouteSquad() {
+      if (this.$store.getters.isLoggedIn) {
+        SquadService.getProcessSquad()
+            .then(response => {
+              this.$router.push({
+                path: `/squad/${response.data.squadId}`,
+                state: response,
+              });
+            })
+            .catch(error => {
+              alert(error.response.data.message);
+            });
+      } else {
+        this.$router.push('/SignIn');
       }
     },
     logout() {
