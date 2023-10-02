@@ -1,6 +1,6 @@
 <template>
   <v-app id="home">
-  <HelloWorld />
+  <MainPage />
   </v-app>
 </template>
 
@@ -8,13 +8,13 @@
 import { defineComponent } from 'vue';
 
 // Components
-import HelloWorld from '../components/MainPage.vue';
+import MainPage from '../components/home/MainPage.vue';
 
 export default defineComponent({
   name: 'HomeView',
 
   components: {
-    HelloWorld,
+    MainPage,
   },
 });
 </script>
