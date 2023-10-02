@@ -100,6 +100,7 @@ export default {
               error => {
                 this.message = error.toString();
                 this.successful = false;
+                alert(error.response.data.message);
               });
     },
   },
