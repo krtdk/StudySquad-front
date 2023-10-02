@@ -34,12 +34,14 @@
       <v-divider/>
     </div>
     <div class="container_body">
-      <div class="squadExplain">
-        {{ data.item.squadExplain }}
+      <div class="squadExplain"
+           v-html="data.item.squadExplain">
       </div>
       <div class="squad_join_button">
         <div class="join_button_radio">
-          <v-radio-group inline>
+          <v-radio-group
+              v-model="data.mentor"
+              inline>
             <v-radio
                 label="mentor"
                 value="true"/>
@@ -60,6 +62,8 @@
 </template>
 
 <script>
+import SquadService from "@/service/squad.service";
+
 export default {
   data() {
     return {
@@ -78,7 +82,26 @@ export default {
   },
   methods: {
     handleJoinSquad() {
+      const pathVariable = this.data.item.squadId;
+      const joinSquadRequest = {
+        mentor: this.data.mentor
+      };
 
+      SquadService.joinSquad(pathVariable, joinSquadRequest)
+          .then(() => {
+            this.$router.push('/');
+          })
+          .catch(error => {
+            if (error.response.status) {
+              const statusCode = error.response.status;
+
+              if (statusCode === 401) {
+                alert('로그인 후 사용가능 합니다.');
+              } else {
+                alert(error.response.data.message);
+              }
+            }
+          })
     },
   },
   created() {
@@ -166,5 +189,13 @@ export default {
 .button_color {
   background-color: #8580D8F5;
   color: white;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+ol {
+  padding-left: 20px;
 }
 </style>
