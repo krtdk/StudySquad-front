@@ -4,7 +4,13 @@ class SquadService {
     getRecruitSquads(params) {
         return api.get('/squad/recruit', {params})
             .then(response => {
-                console.log(response);
+                return response.data;
+            });
+    }
+
+    getProcessSquad() {
+        return api.get('/squad/process')
+            .then(response => {
                 return response.data;
             });
     }
@@ -13,10 +19,13 @@ class SquadService {
         return api.post(`/squad/${squadId}/join`, mentor)
             .then(response => {
                 return response.data;
-            })
-            .catch(error => {
-                console.log(error);
-                return error;
+            });
+    }
+
+    createSquad(createRequest) {
+        return api.post('/squad', createRequest)
+            .then(response => {
+                return response.data;
             });
     }
 }
