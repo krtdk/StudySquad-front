@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import SquadRecruitTable from "@/views/board/SquadRecruitTable.vue";
+import SquadRecruitTable from "@/components/home/SquadRecruitTable.vue";
 
 export default {
   components: {
