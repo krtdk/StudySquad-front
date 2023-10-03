@@ -3,7 +3,7 @@
     <v-btn @click="$router.push('/')" class="logo-button no-hover-background" :ripple="false"
            style="position: relative;" size="large">
       <template #prepend>
-        <img class="mr-3 logo-image" :src="require('../../assets/main_logo.png')" height="60"/>
+        <img class="mr-3 logo-image" :src="require('../../assets/main_logo.png')" height="60" alt="STUDY SQUAD"/>
       </template>
     </v-btn>
     <v-spacer></v-spacer>
