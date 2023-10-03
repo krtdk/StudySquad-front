@@ -95,7 +95,7 @@ export default {
                 this.message = data.message;
                 this.successful = true;
 
-                this.$router.push('/SignIn');
+                this.$router.push('/login');
               },
               error => {
                 this.message = error.toString();
