@@ -29,7 +29,7 @@
     <v-btn @click="routeMyPage()">MY PAGE</v-btn>
 
     <v-btn class="purple-button" dark
-           @click="$router.push('/SignIn')"
+           @click="$router.push('/login')"
            v-if="!loggedIn">
       LOGIN
     </v-btn>
@@ -70,9 +70,9 @@ export default {
     },
     routeMyPage() {
       if (this.$store.getters.isLoggedIn) {
-        this.$router.push('/MyPage');
+        this.$router.push('/mypage');
       } else {
-        this.$router.push('/SignIn');
+        this.$router.push('/login');
 
       }
     },
@@ -89,7 +89,7 @@ export default {
               alert(error.response.data.message);
             });
       } else {
-        this.$router.push('/SignIn');
+        this.$router.push('/login');
       }
     },
     logout() {
@@ -100,11 +100,6 @@ export default {
 </script>
 
 <style>
-.divider {
-  height: 2px;
-  background-color: grey;
-}
-
 .logo-button {
   display: flex;
   align-items: center;
@@ -117,7 +112,10 @@ export default {
 }
 
 .logo-image {
-//width: 70px; //height: 70px; position: absolute; top: 0px; left: 0px; width: 350%;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 350%;
   height: 100%;
 }
 
