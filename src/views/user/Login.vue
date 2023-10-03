@@ -24,7 +24,7 @@
       <v-btn @click="handleLogin()" class="login_button">LOGIN</v-btn>
 
       <div class="login_router">
-        <router-link to="/signup" class="login_link">회원가입</router-link>
+        <router-link to="/join" class="login_link">회원가입</router-link>
       </div>
     </div>
   </v-container>
