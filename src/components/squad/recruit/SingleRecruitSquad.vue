@@ -174,7 +174,7 @@ export default {
   padding-top: 20px;
   display: flex;
   justify-content: right;
-  align-items: end;
+  align-items: flex-end;
 }
 
 .join_button_radio {
