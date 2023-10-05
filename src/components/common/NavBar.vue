@@ -7,23 +7,17 @@
       </template>
     </v-btn>
     <v-spacer></v-spacer>
-    <v-btn @click="$router.push('/')">HOME</v-btn>
-
-    <v-btn @click="handleRouteSquad()">SQUAD</v-btn>
-
-    <v-btn>Board
-      <v-menu activator="parent">
-        <v-list>
-          <v-list-item
-              v-for="(item, index) in items"
-              :key="index"
-              :value="index"
-              @click="goToLink(item.link)"
-          >
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
+    <v-btn @click="$router.push('/')">
+      HOME
+    </v-btn>
+    <v-btn @click="handleRouteSquad()">
+      SQUAD
+    </v-btn>
+    <v-btn @click="$router.push('/squads')">
+      RECRUIT
+    </v-btn>
+    <v-btn @click="$router.push('/boards')">
+      Board
     </v-btn>
 
     <v-btn @click="routeMyPage()">MY PAGE</v-btn>
