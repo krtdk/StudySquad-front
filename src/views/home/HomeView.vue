@@ -8,7 +8,7 @@
 import { defineComponent } from 'vue';
 
 // Components
-import MainPage from '../components/home/MainPage.vue';
+import MainPage from '../../components/home/MainPage.vue';
 
 export default defineComponent({
   name: 'HomeView',
