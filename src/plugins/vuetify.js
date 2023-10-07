@@ -7,6 +7,7 @@ import 'vuetify/lib/framework';
 
 // Vuetify
 import { createVuetify } from 'vuetify'
+import {mdi} from "vuetify/iconsets/mdi";
 
 export default createVuetify(
  {
@@ -14,7 +15,8 @@ export default createVuetify(
     defaultSet: 'fa',
     aliases,
     sets: {
-      fa
+      fa,
+      mdi,
     },
 },
  }
