@@ -39,7 +39,7 @@ const setup = (store) => {
                         return axiosInstance(originalConfig);
                     } catch (_error) {
                         TokenService.removeAccessToken();
-                        router.push('/SignIn');
+                        router.push('/login');
 
                         return Promise.reject(_error);
                     }
