@@ -115,7 +115,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
 .container_menu {
   margin-bottom: 20px;
 }
