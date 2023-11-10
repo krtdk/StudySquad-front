@@ -15,13 +15,11 @@ class SquadService {
             });
     }
 
-    getUserSquad() {
-        const params = {page: 0, size: 10};
-
+    getUserSquad(params) {
         return api.get('/squads', {params})
             .then(response => {
                 return response.data;
-            })
+            });
     }
 
     joinSquad(squadId, mentor) {
