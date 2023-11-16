@@ -1,5 +1,7 @@
 import axiosInstance from './api'
 import TokenService from './token.service'
+import router from '@/router/index'
+import axios from "axios";
 
 const setup = (store) => {
     axiosInstance.interceptors.request.use(config => {
@@ -20,19 +22,27 @@ const setup = (store) => {
         async (err) => {
             const originalConfig = err.config;
 
-            if (err.response.status === 401 && !originalConfig._retry) {
-                originalConfig._retry = true;
+            if (originalConfig.url !== '/login' && err.response) {
+                const statusCode = err.response.status;
+                const notFoundUserMessage = err.response.data.message === '사용자를 찾을 수 없습니다';
 
-                try {
-                    const rs = await axiosInstance.post('/reissue');
-                    const accessToken = rs.headers.get('Authorization');
+                if ((statusCode === 401 || statusCode === 404 && notFoundUserMessage) &&  !originalConfig._retry) {
+                    originalConfig._retry = true;
 
-                    store.dispatch('accessToken', accessToken);
-                    TokenService.setAccessToken(accessToken);
+                    try {
+                        const rs = await axios.post('/reissue');
+                        const accessToken = rs.headers.get('Authorization');
 
-                    return axiosInstance(originalConfig);
-                } catch (_error) {
-                    return Promise.reject(_error);
+                        store.dispatch('accessToken', accessToken);
+                        TokenService.setAccessToken(accessToken);
+
+                        return axiosInstance(originalConfig);
+                    } catch (_error) {
+                        TokenService.removeAccessToken();
+                        router.push('/login');
+
+                        return Promise.reject(_error);
+                    }
                 }
             }
 

@@ -1,40 +1,40 @@
 import api from "@/service/api";
 
-class SquadService {
-    getRecruitSquads(params) {
-        return api.get('/squad/recruit', {params})
+class BoardService {
+    getBoardsWithSquad(squadId) {
+        return api.get(`/squad/${squadId}/boards`)
             .then(response => {
                 return response.data;
             });
     }
 
-    getProcessSquad() {
-        return api.get('/squad/process')
+    getBoard(boardId) {
+        return api.get(`/board/${boardId}`)
             .then(response => {
                 return response.data;
             });
     }
 
-    getUserSquad(params) {
-        return api.get('/squads', {params})
+    getBoards(params) {
+        return api.get('/boards', {params})
             .then(response => {
                 return response.data;
             });
     }
 
-    joinSquad(squadId, mentor) {
-        return api.post(`/squad/${squadId}/join`, mentor)
+    isBoardAllowed(squadId) {
+        return api.get(`/squad/${squadId}/board/allowed`)
             .then(response => {
                 return response.data;
             });
     }
 
-    createSquad(createRequest) {
-        return api.post('/squad', createRequest)
+    createBoard(squadId, createRequest) {
+        return api.post(`/squad/${squadId}/board`, createRequest)
             .then(response => {
                 return response.data;
             });
     }
 }
 
-export default new SquadService();
+export default new BoardService();
