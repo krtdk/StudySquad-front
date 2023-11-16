@@ -1,6 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import HomeView from '../views/home/HomeView.vue'
-import SquadLayout from '../components/SquadLayout.vue'
 
 const routes = [
     {
@@ -37,9 +36,6 @@ const routes = [
         path: '/mypage',
         name: 'MyPage',
         component: () => import('@/views/user/MyPage.vue'),
-        meta: {
-            layout: SquadLayout, // Specify the custom layout component for this route
-        },
     },
     {
         path: '/squad/recruit/:squadId',
@@ -57,6 +53,40 @@ const routes = [
         path: '/squad/write',
         name: 'createMission',
         component: () => import('@/views/squad/CreateSquad.vue'),
+    },
+    {
+        path: '/squad/:squadId/end',
+        name: 'endSquad',
+        component: () => import('@/views/squad/EndSquad.vue'),
+        props: true,
+        children: [
+            {
+                path: '',
+                alias: 'home',
+                name: 'endSquadHome',
+                component: () => import('@/components/squad/end/home/EndSquadHome.vue')
+            },
+            {
+                path: '/squad/:squadId/end/mission',
+                name: 'endSquadMission',
+                component: () => import('@/components/squad/end/mission/EndSquadMission.vue')
+            },
+            {
+                path: '/squad/:squadId/end/squadboard',
+                name: 'endSquadBoard',
+                component: () => import('@/components/squad/end/squadboard/EndSquadBoard.vue')
+            },
+            {
+                path: '/squad/:squadId/end/squadboard/:squadBoardId',
+                name: 'singleEndSquadBoard',
+                component: () => import('@/components/squad/end/squadboard/SingleEndSquadBoard.vue')
+            },
+            {
+                path: '/squad/:squadId/end/summarize',
+                name: 'EndSquadSummarize',
+                component: () => import('@/components/squad/end/summarize/EndSquadSummarize.vue')
+            }
+        ],
     },
     {
         path: '/squad/:squadId',
@@ -123,7 +153,7 @@ const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes,
     scrollBehavior() {
-        return { top: 0 }
+        return {top: 0}
     },
 });
 
