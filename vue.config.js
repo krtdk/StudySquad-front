@@ -1,10 +1,10 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
-  transpileDependencies: true,
+ transpileDependencies: true,
 
-  pluginOptions: {
-    vuetify: {
-			// https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vuetify-loader
-		}
-  }
+  chainWebpack: (config) => {
+    const svgRule = config.module.rule('svg');
+    svgRule.uses.clear();
+    svgRule.use('vue-svg-loader').loader('vue-svg-loader');
+  },
 })
