@@ -10,6 +10,7 @@ import {faUserSecret} from '@fortawesome/free-solid-svg-icons'
 
 import TokenService from "@/service/token.service";
 import setInterceptor from "@/service/setInterceptor";
+import {QuillEditor} from "@vueup/vue-quill";
 
 library.add(faUserSecret)
 loadFonts()
@@ -36,4 +37,5 @@ app.use(router)
         },
     })
     .component('font-awesome-icon', FontAwesomeIcon)
+    .component('QuillEditor', QuillEditor)
     .mount('#app')
