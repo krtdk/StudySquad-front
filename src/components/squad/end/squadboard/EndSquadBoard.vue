@@ -59,7 +59,6 @@ export default {
   methods: {
     routeSquadBoard(squadBoardId) {
       const squadId = this.data.squadId;
-      console.log(squadBoardId);
 
       this.$router.push(`/squad/${squadId}/end/squadboard/${squadBoardId}`);
     }
@@ -67,8 +66,6 @@ export default {
   created() {
     SquadBoardService.getSquadBoards(this.data.squadId)
         .then(response => {
-          console.log(response);
-
           if (response.data === undefined || response.data.length === 0) {
             this.successful = false;
           } else {
@@ -82,8 +79,6 @@ export default {
 
               this.squadBoards[index].push(item);
             });
-
-            console.log(this.squadBoards);
           }
         })
         .catch(error => {

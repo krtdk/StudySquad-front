@@ -130,9 +130,6 @@ export default {
       if (this.chip.singleTag !== undefined && this.chip.singleTag !== '') {
         params.categoryName = this.chip.tags[this.chip.singleTag].label;
       }
-
-      console.log(params);
-
       this.handleGetBoards(params);
     }
   }
