@@ -1,5 +1,6 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import HomeView from '../views/home/HomeView.vue'
+import Vue from "q";
 
 const routes = [
     {
@@ -16,21 +17,6 @@ const routes = [
         path: '/join',
         name: 'Join',
         component: () => import('@/views/user/Join.vue'),
-    },
-    {
-        path: '/MentorBoard',
-        name: 'MentorBoard',
-        component: () => import('@/views/board/MentorBoard.vue'),
-    },
-    {
-        path: '/MenteeBoard',
-        name: 'MenteeBoard',
-        component: () => import('@/views/board/MenteeBoard.vue'),
-    },
-    {
-        path: '/BulletinBoard',
-        name: 'BulletinBoard',
-        component: () => import('@/views/board/BulletinBoard.vue'),
     },
     {
         path: '/mypage',
@@ -157,5 +143,11 @@ const router = createRouter({
     },
 });
 
+router.afterEach((to) => {
+    const title = to.meta.title === undefined ? 'studysquad' : to.meta.title;
+    Vue.nextTick(() => {
+        document.title = title;
+    })
+});
 
 export default router
