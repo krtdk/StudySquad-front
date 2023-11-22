@@ -322,4 +322,12 @@ export default {
   color: #8580D8F5;
   cursor: pointer;
 }
+
+.container_board_content_info >>> ul {
+  padding-left: 30px
+}
+
+.container_board_content_info >>> ol {
+  padding-left: 30px;
+}
 </style>

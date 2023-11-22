@@ -174,6 +174,14 @@ export default {
   margin-left: 10px;
 }
 
+.squadExplain >>> ul {
+  margin-left: 30px;
+}
+
+.squadExplain >>> ol {
+  margin-left: 30px;
+}
+
 .squad_join_button {
   margin-top: 80px;
   padding-top: 20px;
@@ -196,11 +204,12 @@ export default {
   color: white;
 }
 
-ul {
-  padding-left: 20px;
+ul, ol {
+  list-style: disc;
 }
 
-ol {
-  padding-left: 20px;
+
+li {
+  padding-left: 40px;
 }
 </style>

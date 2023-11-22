@@ -226,6 +226,14 @@ export default {
   min-height: 400px;
 }
 
+.container_body_squad_board_content >>> ul {
+  padding-left: 30px;
+}
+
+.container_body_squad_board_content >>> ol {
+  padding-left: 30px;
+}
+
 .edit_button {
   display: flex;
   flex-direction: row;
