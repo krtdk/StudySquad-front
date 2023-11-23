@@ -75,8 +75,6 @@ export default {
           });
     },
     routeRecruitSquad(item) {
-      console.log(item);
-
       this.$router.push({
         path: `/squad/recruit/${item.squadId}`,
         state: item,

@@ -48,6 +48,9 @@ export default {
           ],
           syntax: {
             highlight: text => hljs.highlightAuto(text).value
+          },
+          history: {
+            delay: 300
           }
         }
       },
@@ -57,8 +60,6 @@ export default {
   methods: {
     onEditorChange: debounce(function () {
       this.content = this.$refs.myTextEditor.getHTML();
-      console.log(this.content);
-
       this.$emit('content-update', this.content);
     }, 466),
   },

@@ -65,4 +65,13 @@ export default {
   padding-top: 7px;
 }
 
+.container_home_body_squad_explain >>> ul {
+  padding-left: 30px;
+}
+
+.container_home_body_squad_explain >>> ol {
+  padding-left: 30px;
+}
+
+
 </style>
